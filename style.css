@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
 
 :root {
-  --charcoal: #2B2B2B;
+  --charcoal: #1F1F1F; /* Darker charcoal for more contrast */
   --gold: #D4AF37;
   --white: #FFFFFF;
   --light-grey: #F5F5F5;
@@ -23,11 +23,12 @@ body {
   font-family: 'Inter', sans-serif;
   line-height: 1.7;
   color: var(--text-primary);
+  background-color: var(--white);
 }
 
 .section {
   width: 100%;
-  padding: 100px 25px;
+  padding: 120px 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,46 +45,58 @@ body {
 
 h1, h2, h3 {
     font-weight: 800;
-    letter-spacing: -1px;
+    letter-spacing: -1.5px;
 }
 
-h2 { font-size: 2.8rem; margin-bottom: 2rem; }
+h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2.5rem; line-height: 1.2; }
 
 /* Section 1: Hook */
 #hook {
     height: 100vh;
-    min-height: 700px;
-    background-color: var(--charcoal);
+    min-height: 750px;
     color: var(--white);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-content: center;
+    display: flex;
     padding: 0;
+    align-items: stretch;
+}
+.hook-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--charcoal) 50%, rgba(20, 20, 20, 0.7) 100%);
+    z-index: 1;
 }
 .hook-container {
-    padding: 25px;
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
+    padding: 50px;
+}
+.headshot-container {
+    width: 50%;
+    position: relative;
 }
 .headshot {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.5;
+    object-position: center;
 }
-.logo { max-width: 120px; margin-bottom: 1.5rem; }
-#hook h1 { font-size: 2.2rem; color: var(--white); margin: 0.5rem 0; }
-.tagline { font-size: 1.2rem; color: var(--white); opacity: 0.9; }
+.logo { max-width: 100px; margin-bottom: 2rem; }
+#hook h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--white); margin: 0.5rem 0; line-height: 1.3; }
+.tagline { font-size: 1.2rem; color: var(--white); opacity: 0.8; border-left: 3px solid var(--gold); padding-left: 1rem; margin-top: 1rem; }
 .button {
     display: inline-block;
-    margin-top: 2rem;
-    padding: 15px 35px;
+    margin-top: 2.5rem;
+    padding: 18px 40px;
     background-color: var(--gold);
     color: var(--charcoal);
     text-decoration: none;
@@ -92,62 +105,74 @@ h2 { font-size: 2.8rem; margin-bottom: 2rem; }
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
 }
 
 /* Section 2: Declaration */
 #declaration { background-color: var(--white); }
 .explanation-box {
     background-color: var(--light-grey);
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 8px;
-    margin: 2rem auto;
-    max-width: 700px;
+    margin: 3rem auto;
+    border-left: 5px solid var(--gold);
+    text-align: left;
 }
 .explanation-box h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
 .explanation-box p { font-size: 1rem; color: var(--text-secondary); }
 .body-text { text-align: left; }
-.body-text p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+.body-text p { margin-bottom: 1.5rem; font-size: 1.2rem; }
 
 /* Section 3: Proof */
 #proof { background-color: var(--light-grey); }
-.offer-text { max-width: 650px; margin: 1rem auto 2.5rem auto; font-size: 1.1rem; }
+.offer-text { max-width: 650px; margin: 1rem auto 3rem auto; font-size: 1.2rem; }
 .contact-form { max-width: 600px; margin: 0 auto; }
 .form-group { display: flex; gap: 1rem; margin-bottom: 1rem; }
 .contact-form input {
     width: 100%;
-    padding: 15px;
+    padding: 18px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-form input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
 }
 
 /* Section 4: Invitation */
 #invitation { background-color: var(--charcoal); color: var(--white); }
 #invitation h2 { color: var(--white); }
-.promise-text { max-width: 650px; margin: 1rem auto 3rem auto; color: var(--white); opacity: 0.9; font-size: 1.1rem; }
-.social-icons a { color: var(--white); font-size: 1.8rem; margin: 0 15px; transition: color 0.2s ease; }
-.social-icons a:hover { color: var(--gold); }
+.promise-text { max-width: 650px; margin: 1rem auto 3rem auto; color: var(--white); opacity: 0.9; font-size: 1.2rem; }
+.social-icons a { color: var(--white); font-size: 2rem; margin: 0 20px; transition: color 0.3s ease, transform 0.3s ease; }
+.social-icons a:hover { color: var(--gold); transform: translateY(-5px); }
 
 /* Footer */
 .footer {
     background-color: #1a1a1a;
     color: #888;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
     font-size: 0.9rem;
 }
 
-/* Animations */
+/* Initial Animation States */
+.anim-fade-in { animation: fadeIn 1s ease-out forwards; }
+.anim-fade-in-delay1 { animation: fadeIn 1s 0.3s ease-out forwards; opacity: 0; }
+.anim-fade-in-delay2 { animation: fadeIn 1s 0.6s ease-out forwards; opacity: 0; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
 .reveal {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(40px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 .reveal.visible {
     opacity: 1;
@@ -156,10 +181,11 @@ h2 { font-size: 2.8rem; margin-bottom: 2rem; }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    h2 { font-size: 2rem; }
-    #hook { grid-template-columns: 1fr; }
-    .hook-container { grid-column: 1 / 2; padding: 50px 25px; }
-    .headshot { display: none; } /* Hides headshot on mobile for clarity */
+    .section { padding: 80px 20px; }
+    #hook { display: flex; flex-direction: column; }
+    .hook-container { width: 100%; text-align: center; align-items: center; padding: 80px 20px;}
+    .headshot-container { display: none; }
     #hook h1 { font-size: 1.8rem; }
+    .tagline { border-left: none; padding-left: 0; text-align: center; }
     .form-group { flex-direction: column; }
 }
