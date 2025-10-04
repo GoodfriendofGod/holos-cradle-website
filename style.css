@@ -61,7 +61,6 @@ h2 {
     color: var(--gold);
 }
 
-/* Section 1: Hook */
 #hook {
     height: 100vh;
     min-height: 700px;
@@ -116,7 +115,6 @@ h2 {
     box-shadow: 0 15px 30px rgba(0,0,0,0.25);
 }
 
-/* Section 2: Declaration */
 #declaration { background-color: var(--white); }
 .explanation-box {
     background-color: var(--light-grey);
@@ -131,7 +129,6 @@ h2 {
 .body-text { text-align: left; }
 .body-text p { margin-bottom: 1.5rem; font-size: 1.2rem; }
 
-/* Section 3: Proof */
 #proof { background-color: var(--light-grey); }
 .offer-text { max-width: 650px; margin: 1rem auto 3rem auto; font-size: 1.2rem; }
 .contact-form { max-width: 600px; margin: 0 auto; }
@@ -151,14 +148,12 @@ h2 {
     box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3);
 }
 
-/* Section 4: Invitation */
 #invitation { background-color: var(--charcoal); color: var(--white); }
 #invitation h2 { color: var(--white); }
 .promise-text { max-width: 650px; margin: 1rem auto 3rem auto; color: var(--white); opacity: 0.9; font-size: 1.2rem; }
 .social-icons a { color: var(--white); font-size: 2.2rem; margin: 0 20px; transition: color 0.3s ease, transform 0.3s ease; }
 .social-icons a:hover { color: var(--gold); transform: translateY(-5px); }
 
-/* Footer */
 .footer {
     background-color: #111;
     color: #888;
@@ -167,7 +162,6 @@ h2 {
     font-size: 0.9rem;
 }
 
-/* Animations */
 .anim-entry { opacity: 0; transform: translateY(20px); animation: entryAnim 1s ease-out forwards; }
 .anim-delay-1 { animation-delay: 0.2s; }
 .anim-delay-2 { animation-delay: 0.4s; }
@@ -186,7 +180,6 @@ h2 {
     transform: translateY(0);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     #hook { text-align: center; justify-content: center; }
     .hero-content {
