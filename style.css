@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
 
 :root {
-  --charcoal: #1F1F1F; /* Darker charcoal for more contrast */
+  --charcoal: #1A1A1A;
   --gold: #D4AF37;
   --white: #FFFFFF;
   --light-grey: #F5F5F5;
@@ -24,6 +24,8 @@ body {
   line-height: 1.7;
   color: var(--text-primary);
   background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .section {
@@ -46,53 +48,30 @@ body {
 h1, h2, h3 {
     font-weight: 800;
     letter-spacing: -1.5px;
+    line-height: 1.2;
 }
 
-h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2.5rem; line-height: 1.2; }
+h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2.5rem; }
 
 /* Section 1: Hook */
 #hook {
     height: 100vh;
-    min-height: 750px;
+    min-height: 700px;
     color: var(--white);
     display: flex;
-    padding: 0;
-    align-items: stretch;
-}
-.hook-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, var(--charcoal) 50%, rgba(20, 20, 20, 0.7) 100%);
-    z-index: 1;
+    justify-content: flex-start; /* Align content to the left */
+    align-items: center;
+    text-align: left;
+    background-image: linear-gradient(90deg, var(--charcoal) 30%, rgba(26, 26, 26, 0.7) 60%, rgba(26, 26, 26, 0.3) 100%), url('/images/apostlejew.png');
+    background-size: cover;
+    background-position: center;
 }
 .hook-container {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: left;
-    padding: 50px;
-}
-.headshot-container {
-    width: 50%;
-    position: relative;
-}
-.headshot {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    max-width: 1100px;
 }
 .logo { max-width: 100px; margin-bottom: 2rem; }
-#hook h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--white); margin: 0.5rem 0; line-height: 1.3; }
-.tagline { font-size: 1.2rem; color: var(--white); opacity: 0.8; border-left: 3px solid var(--gold); padding-left: 1rem; margin-top: 1rem; }
+#hook h1 { font-size: clamp(2rem, 5vw, 3rem); color: var(--white); max-width: 600px;}
+.tagline { font-size: 1.2rem; color: var(--white); opacity: 0.8; border-left: 3px solid var(--gold); padding-left: 1rem; margin-top: 1rem; max-width: 600px;}
 .button {
     display: inline-block;
     margin-top: 2.5rem;
@@ -163,16 +142,11 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2.5rem; line-height: 1.2;
     font-size: 0.9rem;
 }
 
-/* Initial Animation States */
-.anim-fade-in { animation: fadeIn 1s ease-out forwards; }
-.anim-fade-in-delay1 { animation: fadeIn 1s 0.3s ease-out forwards; opacity: 0; }
-.anim-fade-in-delay2 { animation: fadeIn 1s 0.6s ease-out forwards; opacity: 0; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
+/* Animations */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 .reveal.visible {
     opacity: 1;
@@ -182,10 +156,12 @@ h2 { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 2.5rem; line-height: 1.2;
 /* Responsive Design */
 @media (max-width: 768px) {
     .section { padding: 80px 20px; }
-    #hook { display: flex; flex-direction: column; }
-    .hook-container { width: 100%; text-align: center; align-items: center; padding: 80px 20px;}
-    .headshot-container { display: none; }
+    #hook {
+        background-image: linear-gradient(rgba(26, 26, 26, 0.8), rgba(26, 26, 26, 0.8)), url('/images/apostlejew.png');
+        justify-content: center;
+        text-align: center;
+    }
     #hook h1 { font-size: 1.8rem; }
-    .tagline { border-left: none; padding-left: 0; text-align: center; }
+    .tagline { border-left: none; padding-left: 0; text-align: center; margin: 1rem auto; }
     .form-group { flex-direction: column; }
 }
