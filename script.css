@@ -1,29 +1,37 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Smooth scrolling for anchor links
+    // Smooth scrolling for anchor links with class 'scroll-link'
     const scrollLinks = document.querySelectorAll('.scroll-link');
     scrollLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            const id = this.getAttribute('href');
-            document.querySelector(id).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         });
     });
 
-    // Fade-in on scroll animation
+    // Fade-in-on-scroll animation using Intersection Observer
     const revealElements = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
+    
+    const observerOptions = {
+        root: null,
+        threshold: 0.15, // Trigger when 15% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Stop observing once it's visible
             }
         });
-    }, {
-        threshold: 0.1
-    });
+    }, observerOptions);
 
     revealElements.forEach(element => {
         observer.observe(element);
