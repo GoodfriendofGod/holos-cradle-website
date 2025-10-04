@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Smooth scrolling for anchor links
+    // Smooth scrolling for anchor links with class 'scroll-link'
     const scrollLinks = document.querySelectorAll('.scroll-link');
     if (scrollLinks.length > 0) {
         scrollLinks.forEach(link => {
@@ -18,11 +18,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Fade-in-on-scroll animation
+    // Fade-in-on-scroll animation using Intersection Observer
     const revealElements = document.querySelectorAll('.reveal');
     
-    // Failsafe: If IntersectionObserver is not supported, just show the elements.
-    if ('IntersectionObserver' in window) {
+    if ('IntersectionObserver' in window && revealElements.length > 0) {
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             observer.observe(element);
         });
     } else {
-        // If the browser is very old, just make everything visible immediately.
+        // Failsafe: If browser is old or there are no elements, just make them all visible.
         revealElements.forEach(element => {
             element.classList.add('visible');
         });
