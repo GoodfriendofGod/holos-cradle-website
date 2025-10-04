@@ -1,46 +1,192 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Smooth scrolling for anchor links with class 'scroll-link'
-    const scrollLinks = document.querySelectorAll('.scroll-link');
-    if (scrollLinks.length > 0) {
-        scrollLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+:root {
+  --charcoal: #1A1A1A;
+  --gold: #D4AF37;
+  --white: #FFFFFF;
+  --light-grey: #F5F5F5;
+  --text-primary: #333;
+  --text-secondary: #555;
+  --font-sans: 'Inter', sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  color: var(--text-primary);
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.section {
+  width: 100%;
+  padding: clamp(80px, 10vw, 120px) 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  z-index: 2;
+}
+
+h1, h2, h3 {
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.2;
+}
+
+h2 { 
+    font-size: clamp(2.2rem, 5vw, 3.2rem); 
+    margin-bottom: 2.5rem; 
+}
+
+.highlight {
+    color: var(--gold);
+}
+
+#hook {
+    height: 100vh;
+    min-height: 700px;
+    color: var(--white);
+    padding: 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+.background-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('/images/apostlejew.png');
+    background-size: cover;
+    background-position: center 30%;
+    z-index: 0;
+}
+.overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(26, 26, 26, 0.95) 0%, rgba(26, 26, 26, 0.6) 50%, rgba(26, 26, 26, 0.2) 100%);
+    z-index: 1;
+}
+.hook-container {
+    max-width: 1200px;
+    padding: 50px;
+}
+.hero-content {
+    max-width: 650px;
+}
+.logo { max-width: 100px; margin-bottom: 2rem; }
+#hook h1 { font-size: clamp(2rem, 5vw, 3.5rem); color: var(--white); }
+.tagline { font-size: 1.3rem; color: var(--white); opacity: 0.9; border-left: 4px solid var(--gold); padding-left: 1.5rem; margin-top: 1.5rem; }
+.button {
+    display: inline-block;
+    margin-top: 2.5rem;
+    padding: 18px 40px;
+    background-color: var(--gold);
+    color: var(--charcoal);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+#declaration { background-color: var(--white); }
+.explanation-box {
+    background-color: var(--light-grey);
+    padding: 2.5rem;
+    border-radius: 8px;
+    margin: 3rem auto;
+    border-left: 5px solid var(--gold);
+    text-align: left;
+}
+.explanation-box h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.explanation-box p { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6; }
+.body-text { text-align: left; }
+.body-text p { margin-bottom: 1.5rem; font-size: 1.2rem; }
+
+#proof { background-color: var(--light-grey); }
+.offer-text { max-width: 650px; margin: 1rem auto 3rem auto; font-size: 1.2rem; }
+.contact-form { max-width: 600px; margin: 0 auto; }
+.form-group { display: flex; gap: 1rem; margin-bottom: 1rem; }
+.contact-form input {
+    width: 100%;
+    padding: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: var(--font-sans);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-form input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3);
+}
+
+#invitation { background-color: var(--charcoal); color: var(--white); }
+#invitation h2 { color: var(--white); }
+.promise-text { max-width: 650px; margin: 1rem auto 3rem auto; color: var(--white); opacity: 0.9; font-size: 1.2rem; }
+.social-icons a { color: var(--white); font-size: 2.2rem; margin: 0 20px; transition: color 0.3s ease, transform 0.3s ease; }
+.social-icons a:hover { color: var(--gold); transform: translateY(-5px); }
+
+.footer {
+    background-color: #111;
+    color: #888;
+    text-align: center;
+    padding: 25px;
+    font-size: 0.9rem;
+}
+
+.anim-entry { opacity: 0; transform: translateY(20px); animation: entryAnim 1s ease-out forwards; }
+.anim-delay-1 { animation-delay: 0.2s; }
+.anim-delay-2 { animation-delay: 0.4s; }
+.anim-delay-3 { animation-delay: 0.6s; }
+@keyframes entryAnim {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    #hook { text-align: center; justify-content: center; }
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-
-    // Fade-in-on-scroll animation using Intersection Observer
-    const revealElements = document.querySelectorAll('.reveal');
-    
-    if ('IntersectionObserver' in window && revealElements.length > 0) {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-
-        revealElements.forEach(element => {
-            observer.observe(element);
-        });
-    } else {
-        // Failsafe: If browser is old or there are no elements, just make them all visible.
-        revealElements.forEach(element => {
-            element.classList.add('visible');
-        });
-    }
-
-});
+    .tagline { border-left: none; padding-left: 0; }
+    .form-group { flex-direction: column; }
+}
